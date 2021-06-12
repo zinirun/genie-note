@@ -1,5 +1,5 @@
 {
-  "name": "GenieNoteApp",
+  "name": "genie-note-app",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -10,8 +10,13 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@eva-design/eva": "^2.1.0",
+    "@ui-kitten/components": "^5.1.0",
     "react": "17.0.1",
-    "react-native": "0.64.2"
+    "react-native": "0.64.2",
+    "react-native-calendars": "^1.1263.0",
+    "react-native-svg": "^12.1.1",
+    "recoil": "^0.3.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
