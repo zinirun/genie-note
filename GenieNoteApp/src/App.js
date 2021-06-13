@@ -1,20 +1,48 @@
+import 'react-native-gesture-handler';
 import React from 'react';
 import * as eva from '@eva-design/eva';
-import {ApplicationProvider, Layout, Text} from '@ui-kitten/components';
+import { ApplicationProvider } from '@ui-kitten/components';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
-const HomeScreen = () => (
-  <Layout
-    style={{
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-    }}>
-    <Text category="h1">HOME!</Text>
-  </Layout>
-);
+import MonthlyScreen from './screens/MonthlyScreen';
+import DailyScreen from './screens/DailyScreen';
 
-export default () => (
-  <ApplicationProvider {...eva} theme={eva.light}>
-    <HomeScreen />
-  </ApplicationProvider>
-);
+const Stack = createStackNavigator();
+
+export default () => {
+    return (
+        <ApplicationProvider {...eva} theme={eva.light}>
+            <NavigationContainer>
+                <Stack.Navigator
+                    initialRouteName="Daily"
+                    screenOptions={{
+                        headerStyle: {
+                            backgroundColor: 'dodgerblue',
+                        },
+                        headerTitleStyle: {
+                            fontWeight: 'bold',
+                        },
+                    }}>
+                    <Stack.Screen
+                        name="Monthly"
+                        component={MonthlyScreen}
+                        options={{
+                            title: 'Monthly Screen',
+                        }}
+                    />
+                    <Stack.Screen
+                        name="Daily"
+                        component={DailyScreen}
+                        initialParams={{
+                            userId: 0,
+                        }}
+                        options={{
+                            title: 'Daily Screen',
+                        }}
+                    />
+                </Stack.Navigator>
+            </NavigationContainer>
+        </ApplicationProvider>
+    );
+};
